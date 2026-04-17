@@ -40,6 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reveal on Scroll Animation
     const revealElements = document.querySelectorAll('.reveal');
+    const statsObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && !started) {
+            statNumbers.forEach(num => startCount(num));
+            started = true;
+        }
+    }, { threshold: 0.1 });
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
