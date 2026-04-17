@@ -865,6 +865,10 @@ body[data-theme="light"] .cta-text {
         z-index: 1000;
         transition: all 400ms ease-in-out;
     }
+
+    body[data-theme="light"] .navbar-links {
+        background-color: #ffffff;
+    }
     
     .navbar-links.mobile-active {
         display: flex !important;
