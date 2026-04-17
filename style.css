@@ -774,17 +774,16 @@ body[data-theme="light"] .process-step-card {
     padding: 100px 0px;
 }
 
-.faq-accordion {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.accordion {
+    border: none;
 }
 
 .faq-item {
     background-color: #1e293b;
     border: 1px solid #334155;
-    border-radius: 16px;
+    border-radius: 16px !important;
     overflow: hidden;
+    margin-bottom: 16px;
 }
 
 body[data-theme="light"] .faq-item {
@@ -792,37 +791,47 @@ body[data-theme="light"] .faq-item {
     border: 1px solid #e2e8f0;
 }
 
-.faq-question {
-    padding: 20px 24px;
+.faq-button {
+    background-color: transparent !important;
+    color: #f8fafc !important;
     font-size: 18px;
     font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 20px 24px;
+    border: none;
+    box-shadow: none !important;
+}
+
+body[data-theme="light"] .faq-button {
+    color: #0f172a !important;
+}
+
+.faq-button:not(.collapsed) {
+    color: #3b82f6 !important;
+}
+
+.faq-button::after {
+    filter: brightness(0) invert(1);
     transition: all 300ms ease;
 }
 
-.faq-question:hover {
-    background-color: rgba(59, 130, 246, 0.05);
+body[data-theme="light"] .faq-button::after {
+    filter: none;
 }
 
-.faq-question.active {
-    color: #3b82f6;
+.faq-button:not(.collapsed)::after {
+    filter: none;
+    background-image: var(--bs-accordion-btn-icon);
 }
 
 .faq-answer {
-    padding: 0px 24px;
-    max-height: 0px;
-    overflow: hidden;
     color: #94a3b8;
     font-size: 15px;
-    transition: all 400ms ease-in-out;
+    padding: 0px 24px 24px 24px;
+    background-color: transparent;
 }
 
-.faq-answer.show {
-    padding-bottom: 24px;
-    max-height: 200px;
+body[data-theme="light"] .faq-answer {
+    color: #475569;
 }
 
 /* CTA Section Styling */

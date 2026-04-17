@@ -394,30 +394,58 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8 reveal">
-                    <div class="faq-accordion">
-                        <div class="faq-item">
-                            <div class="faq-question active">How long does a typical project take? <i
-                                    data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer show">Small websites usually take 1-2 weeks, while complex
-                                applications can take 4-8 weeks depending on the scope.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">Do you offer post-launch support? <i
-                                    data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer">Yes, we provide 30 days of free support and maintenance after every
-                                project to ensure a smooth transition.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">Can you work with my existing code? <i
-                                    data-lucide="chevron-down"></i></div>
-                            <div class="faq-answer">Absolutely! We can take over existing projects, fix bugs, or add new
-                                features as needed.</div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question">What is your pricing model? <i data-lucide="chevron-down"></i>
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button faq-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    How long does a typical project take?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body faq-answer">
+                                    Small websites usually take 1-2 weeks, while complex applications can take 4-8 weeks depending on the scope.
+                                </div>
                             </div>
-                            <div class="faq-answer">We offer project-based pricing and hourly rates depending on what
-                                works best for your business.</div>
+                        </div>
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Do you offer post-launch support?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body faq-answer">
+                                    Yes, we provide 30 days of free support and maintenance after every project to ensure a smooth transition.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 3 -->
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Can you work with my existing code?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body faq-answer">
+                                    Absolutely! We can take over existing projects, fix bugs, or add new features as needed.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FAQ Item 4 -->
+                        <div class="accordion-item faq-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button faq-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    What is your pricing model?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body faq-answer">
+                                    We offer project-based pricing and hourly rates depending on what works best for your business.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
