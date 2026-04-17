@@ -38,15 +38,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Reveal on Scroll Animation
-    const revealElements = document.querySelectorAll('.reveal');
+    // Stats Counter Animation
+    const statCards = document.querySelectorAll('.stat-card');
+    
+    const startCount = (el) => {
+        const numEl = el.querySelector('.stat-number');
+        if (!numEl) return;
+        const target = parseInt(numEl.getAttribute('data-target'));
+        let count = 0;
+        const duration = 2000;
+        const startTime = performance.now();
+
+        const updateCount = (timestamp) => {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            count = Math.floor(progress * target);
+            numEl.innerText = count + (target === 24 ? "/7" : "+");
+
+            if (progress < 1) {
+                requestAnimationFrame(updateCount);
+            } else {
+                numEl.innerText = target + (target === 24 ? "/7" : "+");
+            }
+        };
+        requestAnimationFrame(updateCount);
+    };
+
     const statsObserver = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && !started) {
-            statNumbers.forEach(num => startCount(num));
-            started = true;
-        }
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startCount(entry.target);
+                statsObserver.unobserve(entry.target);
+            }
+        });
     }, { threshold: 0.1 });
 
+    statCards.forEach(card => statsObserver.observe(card));
+
+    // Reveal on Scroll Animation
+    const revealElements = document.querySelectorAll('.reveal');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -163,13 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && navLinksList) {
         mobileMenuBtn.addEventListener('click', () => {
             navLinksList.classList.toggle('mobile-active');
-            
-            // Simple toggle for the list visibility in mobile
+            const icon = mobileMenuBtn.querySelector('i');
             if (navLinksList.classList.contains('mobile-active')) {
-                // We use a helper class "mobile-active" and define its layout in mobile media query
-                // But for immediate feedback, we can do a simple display toggle
-                // Based on user's preference "no inline style", I'll add the styles to style.css next
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                icon.setAttribute('data-lucide', 'menu');
             }
+            lucide.createIcons();
         });
     }
 });
