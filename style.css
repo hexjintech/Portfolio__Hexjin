@@ -715,6 +715,10 @@ body[data-theme="light"] .footer-bottom {
     font-size: 14px;
 }
 
+.color-inherit {
+    color: inherit !important;
+}
+
 /* Stats Section Styling */
 .stats-section {
     background-color: #0f172a;
