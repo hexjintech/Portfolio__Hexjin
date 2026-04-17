@@ -19,11 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
 
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    }
 
     function setTheme(theme) {
         body.setAttribute('data-theme', theme);
@@ -134,31 +136,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                 if (response.ok) {
-                    btn.innerHTML = 'Message Sent! <i data-lucide="check"></i>';
+                    btn.innerHTML = 'Message Sent! <i class="bi bi-check2"></i>';
                     btn.style.backgroundColor = '#10b981'; // Success Green
-                    lucide.createIcons();
                     contactForm.reset();
                     
                     setTimeout(() => {
                         btn.innerHTML = originalText;
                         btn.style.backgroundColor = '';
                         btn.disabled = false;
-                        lucide.createIcons();
                     }, 5000);
                 } else {
                     const data = await response.json();
                     throw new Error(data.error || 'Submission failed');
                 }
             } catch (error) {
-                btn.innerHTML = 'Error Sending <i data-lucide="alert-circle"></i>';
+                btn.innerHTML = 'Error Sending <i class="bi bi-exclamation-triangle"></i>';
                 btn.style.backgroundColor = '#ef4444'; // Error Red
-                lucide.createIcons();
                 
                 setTimeout(() => {
                     btn.innerHTML = originalText;
                     btn.style.backgroundColor = '';
                     btn.disabled = false;
-                    lucide.createIcons();
                 }, 5000);
             }
         });
@@ -196,11 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinksList.classList.toggle('mobile-active');
             const icon = mobileMenuBtn.querySelector('i');
             if (navLinksList.classList.contains('mobile-active')) {
-                icon.setAttribute('data-lucide', 'x');
+                icon.className = 'bi bi-x-lg';
             } else {
-                icon.setAttribute('data-lucide', 'menu');
+                icon.className = 'bi bi-list';
             }
-            lucide.createIcons();
         });
     }
 });
