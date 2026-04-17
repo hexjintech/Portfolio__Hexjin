@@ -623,54 +623,95 @@ body[data-theme="light"] .contact-form .form-control:focus {
 
 /* Footer Section Styling */
 .footer-section {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
     background-color: #0f172a;
+    border-top: 1px solid #1e293b;
 }
 
 body[data-theme="light"] .footer-section {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #f8fafc;
+    border-top: 1px solid #e2e8f0;
 }
 
-.footer-logo {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 800;
-    font-size: 24px;
+.footer-bio {
+    color: #94a3b8;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-col-title {
+    font-size: 18px;
+    font-weight: 700;
     color: #f8fafc;
+    margin-bottom: 24px;
 }
 
-body[data-theme="light"] .footer-logo {
+body[data-theme="light"] .footer-col-title {
     color: #0f172a;
 }
 
-.footer-logo span {
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 300ms ease;
+}
+
+.footer-links a:hover {
     color: #3b82f6;
+    padding-left: 5px;
+}
+
+.footer-contact-info p {
+    color: #94a3b8;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-icon {
+    color: #3b82f6;
+    width: 18px;
 }
 
 .footer-social-link {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+    background-color: #1e293b;
     border: 1px solid #334155;
-    border-radius: 22px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
     color: #94a3b8;
+    transition: all 300ms ease;
 }
 
 body[data-theme="light"] .footer-social-link {
+    background-color: #ffffff;
     border: 1px solid #e2e8f0;
 }
 
 .footer-social-link:hover {
+    background-color: #3b82f6;
+    color: #ffffff;
     border-color: #3b82f6;
-    color: #3b82f6;
     transform: translateY(-3px);
 }
 
+.footer-bottom {
+    border-color: #1e293b !important;
+}
+
+body[data-theme="light"] .footer-bottom {
+    border-color: #e2e8f0 !important;
+}
+
 .footer-copyright {
-    color: #94a3b8;
+    color: #64748b;
     font-size: 14px;
 }
 
