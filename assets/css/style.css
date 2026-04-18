@@ -10,11 +10,13 @@
 
 html {
     scroll-behavior: smooth;
-    cursor: none; /* Hide default for custom cursor */
+    cursor: none;
+    /* Hide default for custom cursor */
 }
 
 [data-theme="light"] body {
-    cursor: auto; /* Fallback for light mode if desired, but we'll try to keep custom cross-theme */
+    cursor: auto;
+    /* Fallback for light mode if desired, but we'll try to keep custom cross-theme */
 }
 
 body {
@@ -86,11 +88,13 @@ body[data-theme="light"] #navbar {
 body[data-theme="light"] .navbar-logo {
     color: #0f172a;
 }
-.navbar-logo img{
+
+.navbar-logo img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
+
 .navbar-logo span {
     color: #3b82f6;
 }
@@ -237,7 +241,7 @@ body[data-theme="light"] .btn-hero-outline {
 
 /* About Section Styling */
 .about-section {
-    padding: 100px 0px;
+    padding: 50px 0px;
 }
 
 .about-placeholder-img {
@@ -463,7 +467,7 @@ body[data-theme="light"] .portfolio-card {
 
 /* Testimonials Section Styling */
 .testimonials-section {
-    padding:50px 0px;
+    padding: 50px 0px;
 }
 
 .testimonial-card {
@@ -511,7 +515,7 @@ body[data-theme="light"] .testimonial-text {
 
 /* Contact Section Styling */
 .contact-section {
-    padding: 100px 0px;
+    padding: 50px 0px;
 }
 
 .contact-info-wrapper {
@@ -1021,6 +1025,7 @@ body[data-theme="light"] .about-hero {
     background-size: cover !important;
     background-position: center !important;
 }
+
 /* --- NEW PROFESSIONAL COMPANY STYLES --- */
 
 /* Trusted By / Logo Marquee */
@@ -1061,8 +1066,13 @@ body[data-theme="light"] .logo-marquee-section {
 }
 
 @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Why Choose Us cards */
@@ -1236,7 +1246,8 @@ body[data-theme="light"] .newsletter-input {
     z-index: 10000;
     transition: transform 0.1s ease;
     mix-blend-mode: difference;
-    display: none; /* Shown via JS */
+    display: none;
+    /* Shown via JS */
 }
 
 .cursor-outline {
@@ -1264,15 +1275,44 @@ body[data-theme="light"] .newsletter-input {
     animation: blob-float 20s infinite alternate cubic-bezier(0.45, 0, 0.55, 1);
 }
 
-.blob-1 { top: -10%; left: -10%; animation-duration: 25s; }
-.blob-2 { bottom: 10%; right: -10%; background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%); animation-duration: 30s; animation-delay: -5s; }
-.blob-3 { top: 40%; left: 30%; background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0) 70%); animation-duration: 35s; animation-delay: -10s; }
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    animation-duration: 25s;
+}
+
+.blob-2 {
+    bottom: 10%;
+    right: -10%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+    animation-duration: 30s;
+    animation-delay: -5s;
+}
+
+.blob-3 {
+    top: 40%;
+    left: 30%;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0) 70%);
+    animation-duration: 35s;
+    animation-delay: -10s;
+}
 
 @keyframes blob-float {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(100px, 50px) scale(1.1); }
-    66% { transform: translate(-50px, 100px) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(100px, 50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-50px, 100px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
 }
 
 /* Hero Title Animation */
@@ -1296,8 +1336,8 @@ body[data-theme="light"] .newsletter-input {
 .reveal {
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 1.2s cubic-bezier(0.2, 1, 0.3, 1), 
-                transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
+    transition: opacity 1.2s cubic-bezier(0.2, 1, 0.3, 1),
+        transform 1.2s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .reveal.active {
@@ -1306,13 +1346,17 @@ body[data-theme="light"] .newsletter-input {
 }
 
 /* Card Hover Enhancements */
-.services-card, .portfolio-card, .feature-card, .stat-card {
-    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1), 
-                box-shadow 0.5s cubic-bezier(0.2, 1, 0.3, 1), 
-                border-color 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+.services-card,
+.portfolio-card,
+.feature-card,
+.stat-card {
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1),
+        box-shadow 0.5s cubic-bezier(0.2, 1, 0.3, 1),
+        border-color 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.services-card:hover, .stat-card:hover {
+.services-card:hover,
+.stat-card:hover {
     box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.2) !important;
 }
 
@@ -1326,11 +1370,15 @@ body[data-theme="light"] .newsletter-input {
 }
 
 /* Magnetic Button Feel (CSS only part) */
-.btn-hire, .btn-hero-primary, .btn-hero-outline, .btn-contact-submit {
-    transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1), 
-                box-shadow 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+.btn-hire,
+.btn-hero-primary,
+.btn-hero-outline,
+.btn-contact-submit {
+    transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1),
+        box-shadow 0.3s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.btn-hire:active, .btn-hero-primary:active {
+.btn-hire:active,
+.btn-hero-primary:active {
     transform: scale(0.95);
 }
