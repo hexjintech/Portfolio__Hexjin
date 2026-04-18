@@ -23,7 +23,8 @@
             <div class="row align-items-center">
                 <div class="col-4">
                     <a href="../index.html" class="navbar-logo">
-                        <i class="bi bi-hexagon"></i>
+                        <img src="assets/images/logo.jpeg" alt="logo">
+
                         HEXJIN<span>TECH</span>
                     </a>
                 </div>
@@ -55,6 +56,8 @@
     <main id="app-root">
     <!-- About Hero Section -->
     <section class="hero-section about-hero" id="about-hero">
+        <div class="bg-blob blob-1"></div>
+        <div class="bg-blob blob-2"></div>
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 reveal">
@@ -76,7 +79,7 @@
     <!-- Mission & Vision Section -->
     <section class="process-section py-5">
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 stagger-reveal">
                 <div class="col-md-6 reveal">
                     <div class="stat-card p-5 h-100">
                         <div class="services-icon mb-4"><i class="bi bi-eye"></i></div>
@@ -95,36 +98,149 @@
         </div>
     </section>
 
-    <!-- Tech Stack Grid -->
-    <section class="about-section pt-5">
+    <!-- Team Section -->
+    <section class="about-section py-5 bg-transparent" id="team">
         <div class="container">
-            <div class="row justify-content-center pt-5">
+            <div class="row justify-content-center">
                 <div class="col-lg-8 text-center mb-5 reveal">
-                    <h2>Our Technical Arsenal</h2>
-                    <p class="opacity-75">We use the best tools for the job to ensure your product is future-proof.</p>
+                    <span class="hero-badge">The Minds Behind HEXJIN</span>
+                    <h2 class="services-title">Meet Our Leadership</h2>
+                    <p class="services-subtitle">A global team of engineers, designers, and strategists dedicated to your success.</p>
                 </div>
             </div>
-            <div class="row g-3 reveal justify-content-center">
-                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">React / Next.js</div></div>
-                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Vue.js</div></div>
-                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Flutter</div></div>
-                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Spring Boot</div></div>
-                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Node.js</div></div>
-                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">MongoDB</div></div>
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-md-4 reveal">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="../assets/images/team-1.png" alt="CEO" class="team-img">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4 class="mb-1">Abhishek Kumar</h4>
+                            <p class="text-primary fw-bold mb-2">Product Developer</p>
+                            <p class="opacity-75 small">Leading with a product-first mindset. Ensuring performance and reliability are built-in from day one.</p>
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="team-social-link"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="col-md-4 reveal">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="../assets/images/team-2.png" alt="CTO" class="team-img">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4 class="mb-1">Sanjana Rao</h4>
+                            <p class="text-primary fw-bold mb-2">Technical Lead</p>
+                            <p class="opacity-75 small">Architecting scalable solutions with Flutter and Node.js for modern web and mobile apps.</p>
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="team-social-link"><i class="bi bi-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="col-md-4 reveal">
+                    <div class="team-card">
+                        <div class="team-img-wrapper">
+                            <img src="../assets/images/team-3.png" alt="Design Lead" class="team-img">
+                        </div>
+                        <div class="portfolio-content">
+                            <h4 class="mb-1">Vikram Seth</h4>
+                            <p class="text-primary fw-bold mb-2">UX Strategist</p>
+                            <p class="opacity-75 small">Specializing in intuitive interfaces and accessibility-driven design systems.</p>
+                            <div class="team-social">
+                                <a href="#" class="team-social-link"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="team-social-link"><i class="bi bi-behance"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="cta-section py-5 mt-5">
-        <div class="container text-center reveal">
-            <h2>Wanna know more about how we work?</h2>
-            <p class="mb-4">Let's have a coffee and chat about your next big idea.</p>
-            <a href="../index.html#contact" class="btn-hero-primary">Start a Conversation</a>
+    <!-- Core Values Section -->
+    <section class="process-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5 reveal">
+                    <h2 class="services-title">Our Core Values</h2>
+                    <p class="services-subtitle">The principles that guide every project we undertake.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 reveal">
+                    <div class="feature-card text-center p-5">
+                        <div class="services-icon mx-auto mb-4"><i class="bi bi-shield-check"></i></div>
+                        <h4>Integrity First</h4>
+                        <p class="opacity-75">We believe in radical transparency and honest communication at every step.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="feature-card text-center p-5">
+                        <div class="services-icon mx-auto mb-4"><i class="bi bi-lightning-charge"></i></div>
+                        <h4>Innovation Always</h4>
+                        <p class="opacity-75">Staying ahead of the curve with the latest technologies and methodologies.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 reveal">
+                    <div class="feature-card text-center p-5">
+                        <div class="services-icon mx-auto mb-4"><i class="bi bi-heart"></i></div>
+                        <h4>Client Success</h4>
+                        <p class="opacity-75">Your growth is our primary metric. We win when you win.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">React / Next.js</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Vue.js</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Flutter</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Dart</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Java</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Spring Boot</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Node.js</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">MongoDB</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Git / GitHub</div></div>
+                <div class="col-6 col-md-3 col-lg-2"><div class="skill-tag w-100 text-center py-3">Vercel</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Achievement Section -->
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6 reveal">
+                    <h2>What I Solve</h2>
+                    <p class="opacity-75 mb-4">I focus on solving real-world problems through efficient UIs and robust accessibility.</p>
+                    <div class="skill-card p-4 mb-3" style="background: rgba(59, 130, 246, 0.05); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.1);">
+                        <h5>Handling Dynamic UI</h5>
+                        <p class="small opacity-75 mb-0">Solved the challenge of efficient UI updates without page reloads, ensuring a smooth and responsive user experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 reveal">
+                    <div class="skill-card p-4" style="background: rgba(16, 185, 129, 0.05); border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.1);">
+                        <h5>Web Accessibility</h5>
+                        <p class="small opacity-75 mb-0">Enhanced usability for differently-abled users through keyboard navigation, focus tracking, and ARIA improvements.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     </main>
 
     <div id="footer-placeholder"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-follower"></div>
+    <div class="cursor-outline"></div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

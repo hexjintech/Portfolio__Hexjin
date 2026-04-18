@@ -3,11 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initial Page Scan
-    console.log("HEXJIN Tech App Initialized");
     initPageScripts();
-
-    // 2. Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
@@ -18,8 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-    // 3. Theme Toggle Logic
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = document.getElementById('sun-icon');
     const moonIcon = document.getElementById('moon-icon');
@@ -68,6 +62,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Page Scripts Initialization
     function initPageScripts() {
+        // Hero Title Animation
+        const heroTitle = document.querySelector('.hero-title');
+        if (heroTitle) {
+            const text = heroTitle.innerText;
+            heroTitle.innerHTML = text.split(' ').map(word => 
+                `<span class="word">${word.split('').map(char => `<span class="char">${char}</span>`).join('')}</span>`
+            ).join(' ');
+            
+            setTimeout(() => {
+                heroTitle.classList.add('active');
+            }, 500);
+        }
+
         // Stats Counter
         const statCards = document.querySelectorAll('.stat-card');
         const statsObserver = new IntersectionObserver((entries) => {
@@ -80,16 +87,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.1 });
         statCards.forEach(card => statsObserver.observe(card));
 
-        // Reveal animations
+        // Enhanced Reveal animations with Staggering
         const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
+        const staggerContainers = document.querySelectorAll('.stagger-reveal');
+
+        // Apply staggering to containers
+        staggerContainers.forEach(container => {
+            const children = container.querySelectorAll('.reveal');
+            children.forEach((child, index) => {
+                child.style.transitionDelay = `${index * 0.15}s`;
+            });
+        });
+
+        window.revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    // We don't unobserve to allow reveal on re-scroll if desired, 
+                    // but usually once is enough.
+                    // window.revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => revealObserver.observe(el));
+        }, { 
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px' 
+        });
+        
+        revealElements.forEach(el => window.revealObserver.observe(el));
 
         // Portfolio Slider
         const sliderContainers = document.querySelectorAll('.portfolio-slider-container');
@@ -113,6 +137,64 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Portfolio Filters
         initPortfolioFilters();
+
+        // Initialize Cursor
+        initCustomCursor();
+    }
+
+    function initCustomCursor() {
+        const follower = document.querySelector('.cursor-follower');
+        const outline = document.querySelector('.cursor-outline');
+        
+        if (!follower || !outline) return;
+
+        // Only show on desktop
+        if (window.innerWidth < 1024) return;
+
+        follower.style.display = 'block';
+        outline.style.display = 'block';
+
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+        let outlineX = 0, outlineY = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        const animate = () => {
+            // Smoothly move follower
+            followerX += (mouseX - followerX) * 0.2;
+            followerY += (mouseY - followerY) * 0.2;
+            follower.style.transform = `translate3d(${followerX - 10}px, ${followerY - 10}px, 0)`;
+
+            // Smoothly move outline
+            outlineX += (mouseX - outlineX) * 0.1;
+            outlineY += (mouseY - outlineY) * 0.1;
+            outline.style.transform = `translate3d(${outlineX - 20}px, ${outlineY - 20}px, 0)`;
+
+            requestAnimationFrame(animate);
+        };
+        animate();
+
+        // Hover effect on interactive elements
+        const hoverables = document.querySelectorAll('a, button, .services-card, .portfolio-card, .stat-card, input, textarea');
+        hoverables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                outline.style.width = '60px';
+                outline.style.height = '60px';
+                outline.style.transform = `translate3d(${outlineX - 30}px, ${outlineY - 30}px, 0)`;
+                outline.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+                follower.style.transform = `translate3d(${followerX - 10}px, ${followerY - 10}px, 0) scale(0.5)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                outline.style.width = '40px';
+                outline.style.height = '40px';
+                outline.style.backgroundColor = 'transparent';
+                follower.style.transform = `translate3d(${followerX - 10}px, ${followerY - 10}px, 0) scale(1)`;
+            });
+        });
     }
 
     function startCount(el) {
