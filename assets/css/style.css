@@ -64,6 +64,7 @@ section {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     background-color: rgba(15, 23, 42, 0.9);
     backdrop-filter: blur(10px);
+    z-index: 1050;
 }
 
 body[data-theme="light"] #navbar {
@@ -189,7 +190,8 @@ body[data-theme="light"] .btn-theme-toggle {
     font-size: 64px;
     line-height: 70px;
     margin-bottom: 24px;
-    color: #f8fafc; /* Fallback */
+    color: #f8fafc;
+    /* Fallback */
 }
 
 body[data-theme="light"] .hero-title {
@@ -936,6 +938,7 @@ body[data-theme="light"] .cta-text {
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 991px) {
+
     .navbar-links {
         display: flex !important;
         position: fixed;
@@ -954,6 +957,12 @@ body[data-theme="light"] .cta-text {
         border-left: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    body[data-theme="light"] .navbar-links {
+        background-color: #f8fafc;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.1);
+    }
+
     .navbar-links.mobile-active {
         right: 0;
     }
@@ -965,6 +974,10 @@ body[data-theme="light"] .cta-text {
         align-items: center;
         justify-content: space-between;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    body[data-theme="light"] .drawer-header {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .drawer-close {
@@ -1003,11 +1016,25 @@ body[data-theme="light"] .cta-text {
     }
 
     /* Staggered entrance */
-    .navbar-links.mobile-active li:nth-child(1) .navbar-link { transition-delay: 0.1s; }
-    .navbar-links.mobile-active li:nth-child(2) .navbar-link { transition-delay: 0.15s; }
-    .navbar-links.mobile-active li:nth-child(3) .navbar-link { transition-delay: 0.2s; }
-    .navbar-links.mobile-active li:nth-child(4) .navbar-link { transition-delay: 0.25s; }
-    .navbar-links.mobile-active li:nth-child(5) .navbar-link { transition-delay: 0.3s; }
+    .navbar-links.mobile-active li:nth-child(1) .navbar-link {
+        transition-delay: 0.1s;
+    }
+
+    .navbar-links.mobile-active li:nth-child(2) .navbar-link {
+        transition-delay: 0.15s;
+    }
+
+    .navbar-links.mobile-active li:nth-child(3) .navbar-link {
+        transition-delay: 0.2s;
+    }
+
+    .navbar-links.mobile-active li:nth-child(4) .navbar-link {
+        transition-delay: 0.25s;
+    }
+
+    .navbar-links.mobile-active li:nth-child(5) .navbar-link {
+        transition-delay: 0.3s;
+    }
 
     /* Drawer Footer */
     .drawer-footer {
@@ -1033,6 +1060,11 @@ body[data-theme="light"] .cta-text {
         color: #3b82f6;
     }
 
+    body[data-theme="light"] .social-icon {
+        background: rgba(0, 0, 0, 0.05);
+        color: #0f172a;
+    }
+
     .nav-backdrop {
         position: fixed;
         top: 0;
@@ -1044,12 +1076,20 @@ body[data-theme="light"] .cta-text {
         z-index: 9999;
         opacity: 0;
         visibility: hidden;
+        display: none;
+        pointer-events: none;
         transition: all 0.4s ease;
     }
 
     .nav-backdrop.active {
         opacity: 1;
         visibility: visible;
+        display: block;
+        pointer-events: auto;
+    }
+
+    #navbar {
+        backdrop-filter: blur(5px);
     }
 
     .navbar-mobile-btn {
@@ -1063,6 +1103,13 @@ body[data-theme="light"] .cta-text {
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-radius: 12px;
         transition: all 0.3s ease;
+        color: #f8fafc;
+    }
+
+    body[data-theme="light"] .navbar-mobile-btn {
+        background-color: rgba(0, 0, 0, 0.05) !important;
+        border: 1px solid rgba(0, 0, 0, 0.1) !important;
+        color: #0f172a;
     }
 
     .hero-title {
@@ -1431,8 +1478,8 @@ body[data-theme="light"] .newsletter-input {
     display: inline-block;
     transform: translateY(100%);
     opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), 
-                opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+        opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1);
     background: linear-gradient(135deg, #f8fafc 80%, #3b82f6);
     -webkit-background-clip: text;
     background-clip: text;
@@ -1541,8 +1588,13 @@ body[data-theme="light"] .newsletter-input {
 }
 
 @keyframes loader-anim {
-    0% { width: 0; }
-    100% { width: 100%; }
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
 
 /* Smooth Page Entrance */

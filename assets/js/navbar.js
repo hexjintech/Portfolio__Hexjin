@@ -2,23 +2,23 @@
 (() => {
     const initNavbar = () => {
         if (window.navbarInitialized) return;
-        
+
         const placeholder = document.getElementById('navbar-placeholder');
         if (!placeholder) return;
 
         // Detect depth and path to adjust relative paths and active states
         const path = window.location.pathname.replace(/\\/g, '/'); // Normalize slashes for Windows
         const segments = path.split('/').filter(s => s.length > 0);
-        
+
         // Define subfolders for path detection
         const subfolders = ['about', 'services', 'portfolio', 'contact', 'case-study-template'];
-        
+
         // Check if we are in a subfolder (more robust detection)
         const currentSubfolder = subfolders.find(s => {
             // Check if folder name is in the path segments
             return segments.some(seg => seg.toLowerCase() === s.toLowerCase());
         });
-        
+
         const isSubfolder = !!currentSubfolder;
         const isNested = path.toLowerCase().includes('/case-study-template/');
         const finalBase = isNested ? '../../' : (isSubfolder ? '../' : '');
@@ -47,12 +47,12 @@
                         </a>
                     </div>
                     <div class="col-8 d-flex justify-content-end align-items-center">
-                        <div class="navbar-links d-none d-lg-flex mb-0 align-items-center">
+                        <div class="navbar-links mb-0 align-items-center">
                             <div class="drawer-header d-lg-none">
                                 <a href="${finalBase}index.html" class="navbar-logo">
                                     HEXJIN<span>TECH</span>
                                 </a>
-                                <button class="drawer-close border-0 bg-transparent text-white">
+                                <button class="drawer-close border-0 bg-transparent">
                                     <i class="bi bi-x-lg"></i>
                                 </button>
                             </div>
@@ -82,7 +82,7 @@
                                 <i class="bi bi-moon moon-icon" style="display: none;"></i>
                             </button>
                             <a href="${finalBase}contact/index.html" class="btn-hire ms-3 d-none d-sm-inline-block">Hire Me</a>
-                            <button class="navbar-mobile-btn d-lg-none border-0 bg-transparent text-white"
+                            <button class="navbar-mobile-btn d-lg-none border-0 bg-transparent"
                                 aria-label="Menu">
                                 <i class="bi bi-list"></i>
                             </button>
@@ -112,8 +112,8 @@ function initNavbarLogic() {
     const navLinksList = document.querySelector('.navbar-links');
     const navBackdrop = document.querySelector('.nav-backdrop');
     const drawerCloseBtn = document.querySelector('.drawer-close');
-    
-    // Explicitly hide backdrop on load to prevent UI glitch
+
+
     if (navBackdrop) {
         navBackdrop.classList.remove('active');
         navBackdrop.style.display = ''; // Reset display 
@@ -134,7 +134,7 @@ function initNavbarLogic() {
                 navBackdrop.classList.toggle('active', isActive);
             }
             document.body.style.overflow = isActive ? 'hidden' : '';
-            
+
             const icon = mobileMenuBtn.querySelector('i');
             if (icon) icon.className = isActive ? 'bi bi-x-lg' : 'bi bi-list';
         };
@@ -151,7 +151,7 @@ function initNavbarLogic() {
         links.forEach(link => {
             link.addEventListener('click', () => toggleMenu(false));
         });
-        
+
         // Close on Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') toggleMenu(false);
@@ -175,7 +175,7 @@ function initNavbarLogic() {
                 const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
                 body.setAttribute('data-theme', newTheme);
                 localStorage.setItem('theme', newTheme);
-                
+
                 // Manually update icons if local
                 const sunIcon = themeNavToggle.querySelector('.sun-icon');
                 const moonIcon = themeNavToggle.querySelector('.moon-icon');
