@@ -64,15 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function initPageScripts() {
         // Hero Title Animation
         const heroTitle = document.querySelector('.hero-title');
-        if (heroTitle) {
-            const text = heroTitle.innerText;
-            heroTitle.innerHTML = text.split(' ').map(word => 
-                `<span class="word">${word.split('').map(char => `<span class="char">${char}</span>`).join('')}</span>`
-            ).join(' ');
-            
-            setTimeout(() => {
-                heroTitle.classList.add('active');
-            }, 500);
+        if (heroTitle && !heroTitle.classList.contains('title-animate')) {
+            const text = heroTitle.innerText.trim();
+            if (text) {
+                heroTitle.innerHTML = text.split(' ').map(word => 
+                    `<span class="word">${word.split('').map(char => `<span class="char">${char}</span>`).join('')}</span>`
+                ).join(' ');
+                
+                // Use a slightly larger delay to ensure DOM is ready before animating
+                setTimeout(() => {
+                    heroTitle.classList.add('title-animate');
+                }, 300);
+            }
         }
 
         // Stats Counter
