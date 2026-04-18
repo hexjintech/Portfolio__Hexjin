@@ -44,21 +44,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 4. Mobile Menu Toggle
-    const mobileMenuBtn = document.querySelector('.navbar-mobile-btn');
-    const navLinksList = document.querySelector('.navbar-links');
+    // 4. Mobile Menu Toggle - REMOVED (Handled by navbar.js)
     
-    if (mobileMenuBtn && navLinksList) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinksList.classList.toggle('mobile-active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navLinksList.classList.contains('mobile-active')) {
-                icon.className = 'bi bi-x-lg';
-            } else {
-                icon.className = 'bi bi-list';
-            }
-        });
-    }
+    // 5. Preloader & Smooth Entrance
+    const preloader = document.querySelector('.preloader');
+    const appRoot = document.getElementById('app-root');
+    
+    window.addEventListener('load', () => {
+        if (preloader) {
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                if (appRoot) appRoot.classList.add('loaded');
+            }, 800);
+        } else if (appRoot) {
+            appRoot.classList.add('loaded');
+        }
+    });
 
     // 5. Page Scripts Initialization
     function initPageScripts() {
@@ -143,6 +144,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initialize Cursor
         initCustomCursor();
+
+        // Initialize Magnetic Elements
+        initMagneticElements();
+    }
+
+    function initMagneticElements() {
+        if (window.innerWidth < 1024) return;
+        
+        const magneticElements = document.querySelectorAll('.magnetic, .btn-hero-primary, .btn-hero-outline, .btn-hire');
+        
+        magneticElements.forEach(el => {
+            el.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                this.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+            });
+            
+            el.addEventListener('mouseleave', function(e) {
+                this.style.transform = `translate(0px, 0px)`;
+            });
+        });
     }
 
     function initCustomCursor() {
