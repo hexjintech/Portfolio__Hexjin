@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings & Reviews | HEXJIN Tech</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+</head>
+
+<body class="reviews-page" data-theme="dark">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-logo">
+            HEXJIN<span>TECH</span>
+            <div class="loader-line"></div>
+        </div>
+    </div>
+
+    <!-- Navigation Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <main id="app-root">
+        <!-- Reviews Hero -->
+        <section class="hero-section reviews-hero">
+            <div class="bg-blob blob-1"></div>
+            <div class="bg-blob blob-2"></div>
+            <div class="container text-center reveal">
+                <span class="hero-badge">Client Stories</span>
+                <h1 class="hero-title">Ratings & Reviews</h1>
+                <p class="hero-description mx-auto" style="max-width: 700px;">We value your feedback. Read what our
+                    clients say about us or share your own experience building with HEXJIN Tech.</p>
+            </div>
+        </section>
+
+        <!-- Dynamic Content Section -->
+        <section class="ratings-section py-5">
+            <div class="container">
+                <div class="row g-5">
+                    <!-- Review Form -->
+                    <div class="col-lg-5 reveal">
+                        <div class="review-form-card">
+                            <h3 class="mb-4">Leave a Review</h3>
+                            <form id="review-form">
+                                <div class="mb-3">
+                                    <label class="form-label">Overall Rating</label>
+                                    <div class="star-rating">
+                                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5"
+                                            title="5 stars"><i class="bi bi-star-fill"></i></label>
+                                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
+                                            title="4 stars"><i class="bi bi-star-fill"></i></label>
+                                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
+                                            title="3 stars"><i class="bi bi-star-fill"></i></label>
+                                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
+                                            title="2 stars"><i class="bi bi-star-fill"></i></label>
+                                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
+                                            title="1 star"><i class="bi bi-star-fill"></i></label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="review-name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="review-name" placeholder="John Doe"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="review-email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="review-email"
+                                        placeholder="john@example.com" required>
+                                    <div id="email-error" class="text-danger small mt-1 d-none">This email has already
+                                        submitted a review!</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="review-role" class="form-label">Role/Company (Optional)</label>
+                                    <input type="text" class="form-control" id="review-role"
+                                        placeholder="CEO, TechCorp">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="review-text" class="form-label">Your Feedback</label>
+                                    <textarea class="form-control" id="review-text" rows="4"
+                                        placeholder="How was your experience?" required></textarea>
+                                </div>
+                                <button type="submit" class="btn-hero-primary w-100 border-0">Post Review <i
+                                        class="bi bi-send-fill ms-2"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Display -->
+                    <div class="col-lg-7">
+                        <div class="d-flex justify-content-between align-items-center mb-4 reveal">
+                            <h3 class="mb-0">Recent Feedback</h3>
+                            <div class="review-stats">
+                                <span class="badge bg-primary px-3 py-2 rounded-pill"><span id="avg-rating">0.0</span>
+                                    <i class="bi bi-star-fill"></i></span>
+                                <small class="ms-2 opacity-50"><span id="total-reviews">0</span> total reviews</small>
+                            </div>
+                        </div>
+
+                        <!-- Filter Bar -->
+                        <div class="reviews-filter mb-4 reveal">
+                            <div class="d-flex flex-wrap gap-2" id="filter-pills">
+                                <button class="filter-pill active" data-filter="all">All</button>
+                                <button class="filter-pill" data-filter="5">5 <i class="bi bi-star-fill"></i></button>
+                                <button class="filter-pill" data-filter="4">4 <i class="bi bi-star-fill"></i></button>
+                                <button class="filter-pill" data-filter="3">3 <i class="bi bi-star-fill"></i></button>
+                                <button class="filter-pill" data-filter="2">2 <i class="bi bi-star-fill"></i></button>
+                                <button class="filter-pill" data-filter="1">1 <i class="bi bi-star-fill"></i></button>
+                            </div>
+                        </div>
+
+                        <div id="reviews-loader" class="text-center py-5 d-none">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2 opacity-50">Syncing with database...</p>
+                        </div>
+
+                        <div class="row g-4" id="reviews-container">
+                            <!-- Reviews will be injected here by reviews.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-follower"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/common.js"></script>
+    <script src="../assets/js/footer.js"></script>
+    <script type="module" src="../assets/js/reviews.js"></script>
+</body>
+
+</html>

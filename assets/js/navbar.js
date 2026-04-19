@@ -7,7 +7,7 @@
 
         const path = window.location.pathname.replace(/\\/g, '/');
         const segments = path.split('/').filter(s => s.length > 0);
-        const subfolders = ['about', 'serviceslinks', 'portfolio', 'contact', 'case-study-template'];
+        const subfolders = ['about', 'services', 'portfolio', 'contact', 'reviews', 'case-study-template'];
         const currentSubfolder = subfolders.find(s => {
             return segments.some(seg => seg.toLowerCase() === s.toLowerCase());
         });
@@ -53,6 +53,7 @@
                                 <li><a href="${finalBase}about/index.html" class="navbar-link ${getActive('about')}">About</a></li>
                                 <li><a href="${finalBase}services/index.html" class="navbar-link ${getActive('services')}">Services</a></li>
                                 <li><a href="${finalBase}portfolio/index.html" class="navbar-link ${getActive('portfolio')}">Portfolio</a></li>
+                                <li><a href="${finalBase}reviews/index.html" class="navbar-link ${getActive('reviews')}">Reviews</a></li>
                                 <li><a href="${finalBase}index.html#faq" class="navbar-link">FAQ</a></li>
                                 <li><a href="${finalBase}contact/index.html" class="navbar-link ${getActive('contact')}">Contact</a></li>
                             </ul>
@@ -73,7 +74,6 @@
                                 <i class="bi bi-sun sun-icon"></i>
                                 <i class="bi bi-moon moon-icon" style="display: none;"></i>
                             </button>
-                            <a href="${finalBase}contact/index.html" class="btn-hire ms-3 d-none d-sm-inline-block">Hire Me</a>
                             <button class="navbar-mobile-btn d-lg-none" aria-label="Menu">
                                 <div class="hamburger-inner">
                                     <span></span>
