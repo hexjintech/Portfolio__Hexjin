@@ -1003,12 +1003,12 @@ body[data-theme="light"] .cta-text {
     }
 
     .navbar-link {
-        font-size: 22px;
+        font-size: 16px;
         width: 100%;
+        margin-bottom: 10px;
+        padding: 10px 20px;
         font-weight: 600;
-        margin-bottom: 30px;
-        text-align: left;
-        /* padding: 8px 0; */
+        text-align: start;
         display: block;
         opacity: 0;
         transform: translateX(20px);
@@ -1049,6 +1049,7 @@ body[data-theme="light"] .cta-text {
     }
 
     body[data-theme="light"] .drawer-footer {
+
         border-top: 1px solid rgba(0, 0, 0, 0.05);
         background: rgba(0, 0, 0, 0.02);
     }
@@ -1179,6 +1180,8 @@ body[data-theme="light"] .cta-text {
         object-fit: contain;
         background-color: #0f172a;
     }
+
+
 }
 
 /* SPA Transitions */

@@ -38,7 +38,7 @@
                         </a>
                     </div>
                     <div class="col-8 d-flex justify-content-end align-items-center">
-                        <div class="navbar-links mb-0 align-items-center">
+                        <div class="navbar-links mb-0 align-items-start align-items-lg-center">
                             <div class="drawer-header d-lg-none">
                                 <a href="${finalBase}index.html" class="navbar-logo">
                                     HEXJIN<span>TECH</span>
@@ -48,7 +48,7 @@
                                 </button>
                             </div>
 
-                            <ul class="nav-list d-lg-flex mb-0 list-unstyled align-items-center">
+                            <ul class="nav-list d-lg-flex mb-0 list-unstyled align-items-start align-items-lg-center">
                                 <li><a href="${finalBase}index.html" class="navbar-link ${getActive('home')}">Home</a></li>
                                 <li><a href="${finalBase}about/index.html" class="navbar-link ${getActive('about')}">About</a></li>
                                 <li><a href="${finalBase}services/index.html" class="navbar-link ${getActive('services')}">Services</a></li>
