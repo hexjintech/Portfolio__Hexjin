@@ -1,4 +1,3 @@
-// Use a self-invoking function to avoid global namespace pollution
 (() => {
     const initNavbar = () => {
         if (window.navbarInitialized) return;
@@ -6,16 +5,10 @@
         const placeholder = document.getElementById('navbar-placeholder');
         if (!placeholder) return;
 
-        // Detect depth and path to adjust relative paths and active states
-        const path = window.location.pathname.replace(/\\/g, '/'); // Normalize slashes for Windows
+        const path = window.location.pathname.replace(/\\/g, '/');
         const segments = path.split('/').filter(s => s.length > 0);
-
-        // Define subfolders for path detection
-        const subfolders = ['about', 'services', 'portfolio', 'contact', 'case-study-template'];
-
-        // Check if we are in a subfolder (more robust detection)
+        const subfolders = ['about', 'serviceslinks', 'portfolio', 'contact', 'case-study-template'];
         const currentSubfolder = subfolders.find(s => {
-            // Check if folder name is in the path segments
             return segments.some(seg => seg.toLowerCase() === s.toLowerCase());
         });
 
@@ -24,8 +17,6 @@
         const finalBase = isNested ? '../../' : (isSubfolder ? '../' : '');
 
         console.log('[Navbar] Initializing...', { path, currentSubfolder, finalBase });
-
-        // Get active page for highlighting
         const getActive = (name) => {
             if (name === 'home') {
                 return !isSubfolder ? 'active' : '';
@@ -62,6 +53,7 @@
                                 <li><a href="${finalBase}about/index.html" class="navbar-link ${getActive('about')}">About</a></li>
                                 <li><a href="${finalBase}services/index.html" class="navbar-link ${getActive('services')}">Services</a></li>
                                 <li><a href="${finalBase}portfolio/index.html" class="navbar-link ${getActive('portfolio')}">Portfolio</a></li>
+                                <li><a href="${finalBase}index.html#faq" class="navbar-link">FAQ</a></li>
                                 <li><a href="${finalBase}contact/index.html" class="navbar-link ${getActive('contact')}">Contact</a></li>
                             </ul>
 
@@ -82,9 +74,12 @@
                                 <i class="bi bi-moon moon-icon" style="display: none;"></i>
                             </button>
                             <a href="${finalBase}contact/index.html" class="btn-hire ms-3 d-none d-sm-inline-block">Hire Me</a>
-                            <button class="navbar-mobile-btn d-lg-none border-0 bg-transparent"
-                                aria-label="Menu">
-                                <i class="bi bi-list"></i>
+                            <button class="navbar-mobile-btn d-lg-none" aria-label="Menu">
+                                <div class="hamburger-inner">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
                             </button>
                         </div>
                     </div>
@@ -130,13 +125,12 @@ function initNavbarLogic() {
         const toggleMenu = (state) => {
             const isActive = state !== undefined ? state : !navLinksList.classList.contains('mobile-active');
             navLinksList.classList.toggle('mobile-active', isActive);
+            mobileMenuBtn.classList.toggle('is-active', isActive);
+
             if (navBackdrop) {
                 navBackdrop.classList.toggle('active', isActive);
             }
             document.body.style.overflow = isActive ? 'hidden' : '';
-
-            const icon = mobileMenuBtn.querySelector('i');
-            if (icon) icon.className = isActive ? 'bi bi-x-lg' : 'bi bi-list';
         };
 
         mobileMenuBtn.addEventListener('click', (e) => {
@@ -149,7 +143,14 @@ function initNavbarLogic() {
 
         const links = navLinksList.querySelectorAll('.navbar-link');
         links.forEach(link => {
-            link.addEventListener('click', () => toggleMenu(false));
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href') || '';
+                // Only close menu automatically for hash links (internal page navigation)
+                // Page-to-page navigation will happen naturally.
+                if (href.startsWith('#') || href.includes('#')) {
+                    toggleMenu(false);
+                }
+            });
         });
 
         // Close on Escape
