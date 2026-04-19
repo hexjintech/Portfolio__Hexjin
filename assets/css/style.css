@@ -1004,10 +1004,11 @@ body[data-theme="light"] .cta-text {
 
     .navbar-link {
         font-size: 22px;
+        width: 100%;
         font-weight: 600;
         margin-bottom: 30px;
         text-align: left;
-        padding: 8px 0;
+        /* padding: 8px 0; */
         display: block;
         opacity: 0;
         transform: translateX(20px);
